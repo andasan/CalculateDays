@@ -56,7 +56,6 @@ function calc2dates(){
         //Calculate only the months of current year
         //----------------------------------------------------------------------------------
         if(birthYear == currentYear && birthMonth != currentMonth){ //Validate if same year AND the target month is not the same as current month
-            console.log("same year");
             for(let x = birthMonth; x <= currentMonth; x++){        //Set loop from beginning of the year until target month
                 if(checkForLeap(currentYear)){                      //Validate if leap year -- true
                     if(x == currentMonth){                          //Validate if loop reaches target month -- true
@@ -90,7 +89,6 @@ function calc2dates(){
         else{
             //calculate number of days from last date of birth year (Dec31) to day of birth
             for(let x = 12; x >= birthMonth; x--){
-                console.log("diff year");
                 if(checkForLeap(birthYear)){                                    //Validate if leap year -- true
                     if(x == birthMonth){
                         calcdaysinmonth += (monthList2[x-1]-birthDay);          
@@ -109,30 +107,30 @@ function calc2dates(){
             }
     
             //calculate number of days from beginning of current year to current day
-            for(let x = 1; x <= currentMonth; x++){
+            for(let y = 1; y <= currentMonth; y++){
                 if(checkForLeap(currentYear)){                                  //Validate if leap year -- true
-                    if(x == currentMonth){
+                    if(y == currentMonth){
                         calcdaysinmonth2+=currentDay;
                         break;
                     }
                     else{
-                        calcdaysinmonth2 += monthList2[x-1];
+                        calcdaysinmonth2 += monthList2[y-1];
                     }
                 }
                 else{                                                           //Validate if leap year -- false
-                    if(x == currentMonth){
+                    if(y == currentMonth){
                         calcdaysinmonth2+=currentDay;
                         break;
                     }
                     else{
-                        calcdaysinmonth2 += monthList1[x-1];
+                        calcdaysinmonth2 += monthList1[y-1];
                     }
                 }
             }
     
             //calculate the number of days in between the two years, if any
-            for(let x = birthYear+1; x < currentYear; x++){ //Loops and add the days in between years, birthYear+1 also eliminates "if" previous year is birth year
-                if(checkForLeap(x)){                        //Validate if leap year -- true
+            for(let z = birthYear+1; z < currentYear; z++){ //Loops and add the days in between years, birthYear+1 also eliminates "if" previous year is birth year
+                if(checkForLeap(z)){                        //Validate if leap year -- true
                     calcdaysinbetween+=366;
                 }
                 else{                                       //Validate if leap year -- false
